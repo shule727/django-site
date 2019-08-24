@@ -1,0 +1,22 @@
+{% extends "photologue/root.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "All albums" %}{% endblock %}
+
+{% block content %}
+
+    <div class="row col-lg-12">
+        <h1 class="page-header">{% trans "All albums" %}</h1>
+    </div>
+
+    {% if object_list %}
+        {% for gallery in object_list %}
+{% include "photologue/includes/gallery_sample.html" %}
+        {% endfor %}
+    {% else %}
+        <div class="row col-lg-12">{% trans "No albums found" %}.</div>
+    {% endif %}
+
+    {% include "photologue/includes/paginator.html" %}
+{% endblock %}

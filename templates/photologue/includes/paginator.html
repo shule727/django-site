@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load static %}
+{% if is_paginated %}
+    <link href="{% static 'photologue/css/photologue.css' %}" rel="stylesheet">
+	<div class="row col-lg-12">
+	    <ul class="pager">
+		    {% if page_obj.has_previous %}
+		    	<li class="pagination-nav"><a href="?page={{ page_obj.previous_page_number }}">{% trans "Prethodna" %}</a></li>
+		    {% else %}
+		    	<li class="disabled pagination-nav"><a href="#">{% trans "Prethodna" %}</a></li>
+		    {% endif %}
+		    <li class="number-of-pages">
+			    {% blocktrans with page_number=page_obj.number total_pages=page_obj.paginator.num_pages %}
+				     {{ page_number }} od {{ total_pages }}
+				{% endblocktrans %}
+		    </li>
+		    {% if page_obj.has_next %}
+		    	<li class="pagination-nav"><a href="?page={{ page_obj.next_page_number }}">{% trans "Sljedeća" %}</a></li>
+		    {% else %}
+		    	<li class="disabled pagination-nav"><a href="#">{% trans "Sljedeća" %}</a></li>
+		    {% endif %}
+	    </ul>
+	</div>
+{% endif %}
