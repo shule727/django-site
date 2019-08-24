@@ -8,8 +8,7 @@ class Publication(models.Model):
     subtitle = models.TextField(max_length=200)
     text = models.TextField(max_length=2000)
     date = models.DateField('date published', default=now)
-    # class Meta:
-    #     verbose_name_plural = "objave"
+
 
     def __str__(self):
         return self.title

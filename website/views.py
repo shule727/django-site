@@ -10,13 +10,13 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 def index(request):
-    sve_objave = Publication.objects.all().values().order_by('-date')
-    zadnje_objave = Publication.objects.order_by('-date')[:2]
-    sve_objave = list(sve_objave)[2:]
+    all_pubs = Publication.objects.all().values().order_by('-date')
+    latest_pubs = Publication.objects.order_by('-date')[:2]
+    all_pubs = list(all_pubs)[2:]
 
 
 
-    paginator = Paginator(sve_objave, 1)
+    paginator = Paginator(all_pubs, 1)
     if request.method == 'GET':
         if request.is_ajax():
             if request.GET.get('page_number'):
@@ -28,7 +28,7 @@ def index(request):
                     return HttpResponseBadRequest(request)
                 # Serialize the paginated objects
                 return JsonResponse(page_objects, safe=False)
-    sve_objave = paginator.page(1).object_list
+    all_pubs = paginator.page(1).object_list
 
     return render(request, 'website/index.html', locals())
 def about(request):

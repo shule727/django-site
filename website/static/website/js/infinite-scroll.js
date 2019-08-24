@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 // Scroll globals
 var pageNum = 1; // The latest page loaded
-var tmp = 2;
+var nextPageNum = 2;
 var hasNextPage = true; // Indicates whether to expect another page after this one
 // loadOnScroll handler
 var loadOnScroll = function() {
@@ -36,9 +36,9 @@ var loadItems = function() {
             hasNextPage = true;//.hasNext;
             // Loop through all items
             $(".klasa" +pageNum ).after(function(n){
-                tmp = pageNum+1
+                nextPageNum = pageNum+1
                 date = data[n].date.split("-")
-                return "<div class='post-preview klasa" + tmp +"'> <a href='objave/" + data[n].id +"'><h2 class='post-title'>" + data[n].title +"</h2><h3 class='post-subtitle'>" + data[n].subtitle + "</h3></a><p class='post-meta'>Published " + parseInt(date[2], 10) + ". " + months[date[1]-1] + " " + date[0] + "." + "</p></div>"
+                return "<div class='post-preview klasa" + nextPageNum +"'> <a href='objave/" + data[n].id +"'><h2 class='post-title'>" + data[n].title +"</h2><h3 class='post-subtitle'>" + data[n].subtitle + "</h3></a><p class='post-meta'>Published " + parseInt(date[2], 10) + ". " + months[date[1]-1] + " " + date[0] + "." + "</p></div>"
             });
         },
         error: function(data) {
