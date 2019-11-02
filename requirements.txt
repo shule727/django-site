@@ -2,4 +2,4 @@ Django==1.10.8
 django-photologue==3.9
 django-sortedm2m==1.5.0
 ExifRead==2.1.2
-Pillow==6.1.0
+Pillow==6.2.0
